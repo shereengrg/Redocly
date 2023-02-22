@@ -15,7 +15,7 @@ components:
       description: This API uses OAuth 2 with the Client Credential grant flow.
   schemas:
     Origin:
-      description: Where is this transaction coming from
+      description: Where is this transaction coming fromm
       additionalProperties: false
       type: object
       properties:
