@@ -19,8 +19,8 @@ jobs:
 
       - name: Build and publish API documentation
         env:
-          REDOCLY_API_KEY: ${{ secrets.REDOCLY_API_KEY }}
-          REPO_NAME: "your-github-username/your-repo-name"
+          REDOCLY_API_KEY: ${{ secrets.TEST_API_KEY }}
+          REPO_NAME: "shereengrg/Redocly"
         run: |
           redoc-cli bundle openapi.yaml -o index.html --template redoc --options.hideDownloadButton=true
-          curl -H "Content-Type: text/html" -H "Authorization: ApiKey $REDOCLY_API_KEY" -X PUT https://api.redoc.ly/v2/streams/github/$REPO_NAME/versions/latest/content -d @index.html
+          curl -H "Content-Type: text/html" -H "Authorization: ApiKey $TEST_API_KEY" -X PUT https://api.redoc.ly/v2/streams/github/$REPO_NAME/versions/latest/content -d @index.html
