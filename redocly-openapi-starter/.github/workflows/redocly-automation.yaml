@@ -1,0 +1,26 @@
+name: redocly-automation
+run-name: ${{ github.actor }} is learning Redocly automation
+on: [push]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build API Documentation
+        uses: npm run build-docs
+
+#      - name: Zip documentation files
+#        run: zip -r api-docs.zip ./docs
+
+      - name: Upload to Redocly
+        uses: redocly/Test@v2
+        with:
+          apiKey: sk_GUVtdRA15KfT6KWEKNuCkflPi64=_gSJn9/eSrqEoddnEd5YGXXrTqq0j03kldkp86C8PRzM=
+          apiName: Test
+          docsPath: ./openapi.yaml
+          version: latest
+          specType: OAS3
+          specPath: ./openapi.yaml
+          siteUrl: https://curvy-bobcat-26.redoc.ly/
